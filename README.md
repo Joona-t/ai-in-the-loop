@@ -53,4 +53,4 @@ Understand the problem before automating it. The loop is short, the threshold is
 
 ---
 
-Vibed wth Claude
+Vibed with Claude
