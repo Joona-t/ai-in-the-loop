@@ -1,6 +1,6 @@
 # ai-in-the-loop
 
-A small automation experiment: a Claude Code cloud routine that runs every 4 hours and outputs a structured AI/dev intelligence brief.
+A small automation experiment: a Claude Code cloud routine that fires five times a day and outputs a structured AI/dev intelligence brief.
 
 ## Why this exists
 
@@ -12,9 +12,7 @@ It is not a product. It is how I am trying to stay current without being termina
 
 ## How it works
 
-A Claude Code cloud routine runs every 4 hours on Anthropic's infrastructure, independent of whether my machine is on. Each cycle searches for AI and dev developments published in the last 4 hours, applies a significance threshold, and outputs a single ranked markdown digest.
-
-If nothing in the window qualifies, the cycle outputs `"No significant updates this cycle."` and stops. No padding, no recap, no filler — the loop defers to the next run.
+The routine fires five times daily at 05:00, 09:00, 13:00, 17:00, and 21:00 Helsinki time. Each run scopes its web search to items published since the previous run — usually a 4-hour window, with one 8-hour overnight window covering 21:00 → 05:00. Runs that find nothing meeting the significance threshold output a single line and stop, deferring to the next loop instead of padding.
 
 Sections, when there is signal:
 
@@ -34,7 +32,7 @@ The live version lives on Anthropic's side; this file is the source of truth I e
 
 ## Roadmap
 
-**V2 — near-realtime trigger.** A small Cloudflare Worker polls a curated list of RSS/Atom feeds (Anthropic news, docs, model release pages) every 15 minutes. When a new item appears, the Worker fires the routine via API trigger. KV-backed dedupe so the same item never triggers twice. The 4-hour scheduled run stays as the fallback floor.
+**V2 — near-realtime trigger.** A small Cloudflare Worker polls a curated list of RSS/Atom feeds (Anthropic news, docs, model release pages) every 15 minutes. When a new item appears, the Worker fires the routine via API trigger. KV-backed dedupe so the same item never triggers twice. The 5x/day scheduled run stays as the fallback floor.
 
 The point is to not miss a same-day Anthropic release while keeping the rest of the brief on its calmer cadence.
 

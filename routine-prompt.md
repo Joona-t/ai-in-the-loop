@@ -1,14 +1,20 @@
 # routine-prompt
 
-> This is the prompt as of 2026-05-07. The live version may drift; this file is the source of truth I edit against.
+> **Last synced:** 2026-05-07
+> This file mirrors the prompt running in the cloud routine.
+> The live version may drift; this file is the source of truth
+> I edit against.
 
 ---
 
 ```text
-AI/dev intelligence brief. Runs every 4 hours.
+AI/dev intelligence brief. Runs at 05:00, 09:00, 13:00, 17:00,
+and 21:00 Helsinki time daily.
 
-Scope every search to items published or materially updated in the
-last 4 hours. If nothing meets the significance threshold below,
+Scope every search to items published or materially updated since
+the previous scheduled run. For the 05:00 run that means the
+prior ~8 hours (21:00 → 05:00); for all other runs, the prior
+~4 hours. If nothing meets the significance threshold below,
 output only:
 
   "No significant updates this cycle."
@@ -41,7 +47,7 @@ importance (not chronology). Omit any section with no items.
    class), Gemma family, llama.cpp, vLLM, MLX, on-device tooling.
    Privacy-first / local-first especially.
 
-5. WORTH READING — 1-3 papers/posts/talks from this 4-hour window,
+5. WORTH READING — 1-3 papers/posts/talks from this run's window,
    one sentence why each.
 
 SIGNIFICANCE THRESHOLD (only these qualify):
