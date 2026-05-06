@@ -55,4 +55,4 @@ Understand the problem before automating it. The loop is short, the threshold is
 
 ---
 
-built by Joona (Darkfire) · LoveSpark · 🜂
+Vibed wth Claude
