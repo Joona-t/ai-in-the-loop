@@ -8,14 +8,11 @@
 ---
 
 ```text
-AI/dev intelligence brief. Runs at 05:00, 09:00, 13:00, 17:00,
-and 21:00 Helsinki time daily.
+AI/dev intelligence brief. Runs once daily at 08:00 Helsinki time.
 
 Scope every search to items published or materially updated since
-the previous scheduled run. For the 05:00 run that means the
-prior ~8 hours (21:00 → 05:00); for all other runs, the prior
-~4 hours. If nothing meets the significance threshold below,
-output only:
+the previous scheduled run: the prior ~24 hours. If nothing meets
+the significance threshold below, output only:
 
   "No significant updates this cycle."
 

@@ -4,7 +4,7 @@ Repo-level context for Claude Code sessions on this project.
 
 ## Purpose
 
-This repo holds the prompt source and supporting docs for an AI/dev intelligence brief — a Claude Code cloud routine that runs every 4 hours. The live routine is configured on Anthropic's side; this repo is the version-controlled source of truth I edit against. The README explains the project in full.
+This repo holds the prompt source and supporting docs for an AI/dev intelligence brief — a Claude Code cloud routine that runs once a day at 08:00 Helsinki time. The live routine is configured on Anthropic's side; this repo is the version-controlled source of truth I edit against. The README explains the project in full.
 
 ## How I work
 
