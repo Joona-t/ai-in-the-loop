@@ -18,3 +18,16 @@ A log of bug fixes and iterations on this repo. Newest entries at the top.
 - Header note in `routine-prompt.md` upgraded to a dated "Last synced" block so future drift between this file and the live cloud routine is visible at a glance.
 
 The live cloud routine prompt is updated separately in the Anthropic UI; that surface is not version-controlled here.
+
+## 2026-10-07 — BUG-001: ARCHIVED.md leaked a home path and misstated repo size
+
+**Problem.** PR #1's `ARCHIVED.md` (archive-prep note) cited the fleet audit by an absolute `/Users/<name>/...` home path in a PUBLIC repo, and described the repo as "6 files, 5 commits" when `main` has 7 tracked files and 6 commits.
+
+**Root cause.** The archive-prep agent copied the audit doc's absolute local path verbatim and reused stale counts from the July audit instead of re-reading `git ls-tree`/`git rev-list` at write time.
+
+**Fix.** Reference rewritten as `~/meta_implementation.md`; counts corrected to "7 files, 6 commits" (verified: `git ls-tree -r --name-only origin/main | wc -l` → 7, `git rev-list --count origin/main` → 6).
+
+**Regression check (docs-only repo, no test harness).**
+```
+git grep -nE "/Users/[a-z]+" -- . ; echo "exit: $?"   # expect no output, exit 1
+```
